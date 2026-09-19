@@ -9,8 +9,6 @@ export default function Sidebar({
   breakingNews = [],
   articleTitle = 'Check this out!',
 }) {
-    console.log('Categories:', categories);
-    console.log('Breaking News:', breakingNews);
 
   const [shareUrl, setShareUrl] = useState('');
   const [email, setEmail] = useState('');

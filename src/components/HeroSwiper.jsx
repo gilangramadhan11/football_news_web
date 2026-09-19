@@ -78,11 +78,11 @@ export default function HeroSwiper({ featured }) {
                                     </span>
                                 </div>
 
-                                <h1 className="text-3xl md:text-3xl lg:text-4xl font-bold mt-3 leading-tight">
+                                <h1 className="text-lg md:text-3xl lg:text-4xl font-bold mt-3 leading-tight">
                                     {featuredArticle.title}
                                 </h1>
 
-                                <h3 className="mt-4 max-w-7xl text-slate-300 text-xl md:text-xl leading-relaxed">
+                                <h3 className="mt-4 hidden max-w-7xl text-slate-300 text-xl md:text-xl leading-relaxed md:block">
                                     {featuredArticle.content
                                         ?.replace(/<[^>]*>/g, '')
                                         .slice(0, 240)
@@ -90,16 +90,16 @@ export default function HeroSwiper({ featured }) {
                                 </h3>
                                 <div className="flex items-center justify-between mt-6 flex-wrap gap-4">
                                     <Link href={`/article/${featuredArticle.slug}`}
-                                    className="group inline-flex items-center gap-2 mt-6 bg-lime-500 hover:bg-lime-400 text-slate-900 font-semibold px-6 py-2.5 rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(163,230,53,0.3)] hover:shadow-[0_0_25px_rgba(163,230,53,0.5)]">
+                                    className="group inline-flex items-center gap-1.5 px-3 py-1.5 text-xs mt-6 bg-lime-500  hover:bg-lime-400 text-slate-900 font-semibold md:gap-2 md:px-6 md:py-2.5 md:text-base rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(163,230,53,0.3)] hover:shadow-[0_0_25px_rgba(163,230,53,0.5)]">
                                         Baca Selengkapnya
-                                        <i className='bx bx-right-arrow-alt text-lg group-hover:translate-x-1 transition-transform'></i>
+                                        <i className='bx bx-right-arrow-alt text-base md:text-xl group-hover:translate-x-1 transition-transform'></i>
                                     </Link>
                                     <div className="flex items-center gap-2">
-                                        <div className="swiper-button-prev-custom w-11 h-11 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-lime-500 hover:text-slate-900 hover:border-lime-400 transition-all duration-300 cursor-pointer">
-                                            <i className='bx bx-chevron-left text-2xl'></i>
+                                        <div className="swiper-button-prev-custom md:w-11 md:h-11 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-lime-500 hover:text-slate-900 hover:border-lime-400 transition-all duration-300 cursor-pointer">
+                                            <i className='bx bx-chevron-left text-xl md:text-2xl'></i>
                                         </div>
-                                        <div className="swiper-button-next-custom w-11 h-11 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-lime-500 hover:text-slate-900 hover:border-lime-400 transition-all duration-300 cursor-pointer">
-                                            <i className='bx bx-chevron-right text-2xl'></i>
+                                        <div className="swiper-button-next-custom md:w-11 md:h-11 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-lime-500 hover:text-slate-900 hover:border-lime-400 transition-all duration-300 cursor-pointer">
+                                            <i className='bx bx-chevron-right text-xl md:text-2xl'></i>
                                         </div>
                                     </div>
                                 </div>

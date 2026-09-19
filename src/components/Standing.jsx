@@ -155,8 +155,8 @@ export default function MatchScore({ standings, topScorers, topAssists }) {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-100">
-                    {topScorers.map((player) => {
-                      const rank = player.rank;
+                    {topScorers.map((player, index) => {
+                      const rank = player.rank || index + 1;
                       const rankStyle =
                         rank === 1
                           ? { bg: 'bg-yellow-400', text: 'text-gray-900', icon: 'bxs-star' }
@@ -174,7 +174,7 @@ export default function MatchScore({ standings, topScorers, topAssists }) {
                             >
                               {rankStyle.icon && (
                                 <i
-                                  className={`bx ${rankStyle.icon} absolute -top-2 text-gray-900 text-sm`}
+                                  className={`bx absolute -top-2 text-gray-900 text-sm`}
                                 ></i>
                               )}
                               {rank}
@@ -254,8 +254,8 @@ export default function MatchScore({ standings, topScorers, topAssists }) {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-100">
-                    {topAssists.map((player) => {
-                      const rank = player.rank;
+                    {topAssists.map((player, index) => {
+                      const rank = player.rank || index + 1;
                       const rankStyle =
                         rank === 1
                           ? { bg: 'bg-yellow-400', text: 'text-gray-900', icon: 'bxs-star' }
@@ -273,7 +273,7 @@ export default function MatchScore({ standings, topScorers, topAssists }) {
                             >
                               {rankStyle.icon && (
                                 <i
-                                  className={`bx ${rankStyle.icon} absolute -top-2 text-gray-900 text-sm`}
+                                  className={`bx absolute -top-2 -right-1 text-xs ${rankStyle.iconColor}`}
                                 ></i>
                               )}
                               {rank}
@@ -325,16 +325,6 @@ export default function MatchScore({ standings, topScorers, topAssists }) {
                   </tbody>
                 </table>
               </div>
-            </div>
-
-            <div className="flex md:hidden justify-center mt-6">
-              <a
-                href="#"
-                className="flex items-center gap-1.5 bg-indigo-600 text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-indigo-700 transition"
-              >
-                Lihat Semua Top Scorer
-                <i className="bx bx-right-arrow-alt text-lg"></i>
-              </a>
             </div>
           </div>
         </div>

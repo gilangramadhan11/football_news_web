@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { timeAgo } from '@/utils/timeAgo';
 
 export default function LatestNews({ latest }) {
@@ -100,35 +101,51 @@ export default function LatestNews({ latest }) {
           {/* Side Articles */}
           <div className="flex flex-col gap-7">
             {sideArticles.map((article) => (
-              <article key={article.id || article.slug} className="group flex gap-4">
-                <a
+              <article
+                key={article.id || article.slug}
+                className="group flex flex-col sm:flex-row gap-4"
+              >
+                {/* Thumbnail Image */}
+                <Link
                   href={`/article/${article.slug}`}
-                  className="w-64 h-42 shrink-0 overflow-hidden rounded-xl relative"
+                  className="w-full h-48 sm:w-64 sm:h-42 shrink-0 overflow-hidden rounded-xl relative block bg-slate-800"
                 >
-                  <img
+                  <Image
                     src={`http://127.0.0.1:8000/storage/${article.thumbnail}`}
-                    alt={article.title}
-                    className="w-full h-full rounded-lg object-cover group-hover:scale-105 transition duration-500"
+                    alt={article.title || 'Thumbnail'}
+                    fill
+                    unoptimized
+                    sizes="(max-width: 640px) 100vw, 256px"
+                    className="object-cover group-hover:scale-105 transition duration-500 rounded-xl"
                   />
-                </a>
-                <div className="flex flex-col min-w-0">
-                  <div className="flex items-center gap-3 text-sm text-slate-500">
-                    <div className="w-10 h-10 rounded-full bg-slate-700 text-lime-400 flex items-center justify-center font-semibold text-sm shrink-0">
+                </Link>
+
+                {/* Article Info */}
+                <div className="flex flex-col min-w-0 flex-1">
+                  {/* Author & Time Meta */}
+                  <div className="flex items-center gap-3 text-sm text-slate-500 flex-wrap">
+                    <div className="w-8 h-8 text-xs rounded-full bg-slate-700 text-lime-400 flex items-center justify-center font-semibold shrink-0">
                       {getInitials(article.user?.name)}
                     </div>
-                    <span className="flex items-center gap-1.5">
+                    <span className="flex text-xs items-center gap-1.5">
                       <i className="bx bx-user"></i>
-                      {article.user?.name}
+                      {article.user?.name || 'Admin'}
                     </span>
                     <span className="w-1 h-1 rounded-full bg-slate-300"></span>
-                    <span className="flex items-center gap-1.5">
+                    <span className="flex text-xs items-center gap-1.5">
                       {timeAgo(article.created_at)}
                     </span>
                   </div>
-                  <p className="mt-3 text-slate-900 leading-relaxed font-semibold">
-                    {truncateText(article.content, 15)}
-                  </p>
-                  <div className="mt-auto pt-2">
+
+                  {/* Title / Excerpt */}
+                  <Link href={`/article/${article.slug}`}>
+                    <p className="mt-3 text-slate-900 text-sm leading-relaxed font-semibold group-hover:text-lime-600 transition line-clamp-3">
+                      {truncateText(article.content, 10)}
+                    </p>
+                  </Link>
+
+                  {/* Read Time */}
+                  <div className="mt-3 sm:mt-auto pt-2">
                     <span className="flex items-center gap-1 text-xs text-slate-500">
                       <i className="bx bx-time-five"></i>
                       {getReadTime(article.content)} min read

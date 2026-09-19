@@ -1,4 +1,3 @@
-import Navbar from '@/components/Navbar';
 import HeroSwiper from '@/components/HeroSwiper';
 import LatestNews from '@/components/LatestNews';
 import MatchScore from '@/components/MatchScore';
@@ -26,10 +25,9 @@ async function getHomeData() {
 
 export default async function HomePage() {
     const { featured, recentArticles, standings, weekFixtures, populerArticles, trending, topScorers, topAssists } = await getHomeData();
-  
+    
     return (
         <>
-            <Navbar />
             <div className="pt-16">
                 <HeroSwiper featured={featured} />
                 <LatestNews latest={recentArticles} />

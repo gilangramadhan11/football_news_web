@@ -1,5 +1,4 @@
 import { notFound } from 'next/navigation';
-import Navbar from '@/components/Navbar';
 import ArticleDetailClient from '@/components/ArticleDetailClient';
 
 async function getArticle(slug) {
@@ -21,7 +20,6 @@ export default async function ArticleDetailPage({ params }) {
 
   return (
     <>
-    <Navbar />
         <div className="pt-16">
             <ArticleDetailClient 
                 article={articleData} 

@@ -48,7 +48,7 @@ export default function PopulerNews({ populerArticles, trending }) {
             <img
               src={`http://127.0.0.1:8000/storage/${populerArticle.thumbnail}`}
               alt={populerArticle.title}
-              className="object-cover group-hover:scale-105 transition-transform duration-700"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
 
@@ -114,17 +114,6 @@ export default function PopulerNews({ populerArticles, trending }) {
               </div>
             </a>
           ))}
-        </div>
-
-        {/* Tombol Mobile */}
-        <div className="flex md:hidden justify-center mt-8">
-          <a
-            href="/articles?sort=popular"
-            className="flex items-center gap-1.5 bg-indigo-600 text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-indigo-700 transition"
-          >
-            Lihat Semua Trending
-            <i className="bx bx-right-arrow-alt text-lg"></i>
-          </a>
         </div>
       </section>
     );
