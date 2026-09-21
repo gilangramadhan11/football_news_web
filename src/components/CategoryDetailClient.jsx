@@ -16,6 +16,11 @@ export default function CategoryContent(categories) {
     const [loading, setLoading] = useState(true);
     const [notFoundError, setNotFoundError] = useState(false);
 
+    const backendUrl =
+    process.env.NODE_ENV === 'production'
+      ? 'https://footballnews-production.up.railway.app'
+      : 'http://127.0.0.1:8000';
+
     useEffect(() => {
         async function fetchData() {
             setLoading(true);
@@ -119,7 +124,7 @@ export default function CategoryContent(categories) {
                             >
                                 <div className="h-44 overflow-hidden rounded-2xl">
                                     <img
-                                        src={`http://localhost:8000/storage/${article.thumbnail}`}
+                                        src={`${backendUrl}/storage/${article.thumbnail}`}
                                         alt={article.title}
                                         fill
                                         unoptimized

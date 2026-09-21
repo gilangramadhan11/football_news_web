@@ -31,6 +31,11 @@ export default function Sidebar({
     return text.substring(0, limit) + '...';
   };
 
+  const backendUrl =
+    process.env.NODE_ENV === 'production'
+      ? 'https://footballnews-production.up.railway.app'
+      : 'http://127.0.0.1:8000';
+
   // Handler Submit Newsletter
   const handleNewsletterSubmit = (e) => {
     e.preventDefault();
@@ -125,7 +130,7 @@ export default function Sidebar({
             {relatedArticle.thumbnail ? (
               <div className="relative w-42 h-24 shrink-0 rounded-2xl overflow-hidden">
                 <Image
-                    src={`http://localhost:8000/storage/${relatedArticle.thumbnail}`}
+                    src={`${backendUrl}/storage/${relatedArticle.thumbnail}`}
                     alt={relatedArticle.title}
                     fill
                     unoptimized

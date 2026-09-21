@@ -71,6 +71,11 @@ export default function ArticleDetailClient({
     }
   };
 
+  const backendUrl =
+    process.env.NODE_ENV === 'production'
+      ? 'https://footballnews-production.up.railway.app'
+      : 'http://127.0.0.1:8000';
+
   if (!article) return null;
 
   return (
@@ -160,7 +165,7 @@ export default function ArticleDetailClient({
             {article.thumbnail && (
                 <div className="relative mt-8 w-full lg:h-[800px] md:h-[500px] sm:h-[400px] h-[200] overflow-hidden rounded-4xl shadow-xl">
                 <Image
-                    src={`http://localhost:8000/storage/${article.thumbnail}`}
+                    src={`${backendUrl}/storage/${article.thumbnail}`}
                     alt={article.title}
                     fill
                     unoptimized
@@ -199,7 +204,7 @@ export default function ArticleDetailClient({
                   {related.thumbnail && (
                     <div className="relative w-full h-36 rounded-2xl overflow-hidden">
                       <Image
-                        src={`http://localhost:8000/storage/${related.thumbnail}`}
+                        src={`${backendUrl}/storage/${related.thumbnail}`}
                         alt={related.title}
                         fill
                         unoptimized

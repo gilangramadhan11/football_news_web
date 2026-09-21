@@ -25,6 +25,11 @@ export default function PopulerNews({ populerArticles, trending }) {
         return words.slice(0, limit).join(' ') + '...';
     };
 
+    const backendUrl =
+    process.env.NODE_ENV === 'production'
+      ? 'https://footballnews-production.up.railway.app'
+      : 'http://127.0.0.1:8000';
+
     const populerArticle = populerArticles[0];
     const trendings = trending.slice(1, 5);
     return (
@@ -46,7 +51,7 @@ export default function PopulerNews({ populerArticles, trending }) {
             className="group relative block rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 h-[420px] md:h-[480px] lg:h-[650px] mb-6"
           >
             <img
-              src={`http://127.0.0.1:8000/storage/${populerArticle.thumbnail}`}
+              src={`${backendUrl}/storage/${populerArticle.thumbnail}`}
               alt={populerArticle.title}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
@@ -87,7 +92,7 @@ export default function PopulerNews({ populerArticles, trending }) {
             >
               <div className="relative w-full overflow-hidden rounded-xl">
                 <img
-                  src={`http://127.0.0.1:8000/storage/${news.thumbnail}`}
+                  src={`${backendUrl}/storage/${news.thumbnail}`}
                   alt={news.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                 />

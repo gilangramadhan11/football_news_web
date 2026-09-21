@@ -116,7 +116,7 @@ export default function LatestNews({ latest }) {
                   className="w-full h-48 sm:w-64 sm:h-42 shrink-0 overflow-hidden rounded-xl relative block bg-slate-800"
                 >
                   <Image
-                    src={`http://127.0.0.1:8000/storage/${article.thumbnail}`}
+                    src={`${backendUrl}/storage/${article.thumbnail}`}
                     alt={article.title || 'Thumbnail'}
                     fill
                     unoptimized

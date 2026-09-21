@@ -9,14 +9,14 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
-const backendUrl =
-  process.env.NODE_ENV === 'production'
-    ? 'https://footballnews-production.up.railway.app'
-    : 'http://127.0.0.1:8000';
-
 export default function HeroSwiper({ featured }) {
     if (!featured || featured.length === 0) return null;
-
+    
+    const backendUrl =
+    process.env.NODE_ENV === 'production'
+        ? 'https://footballnews-production.up.railway.app'
+        : 'http://127.0.0.1:8000';
+    
     return (
         <div className="relative col-span-full">
             <Swiper
