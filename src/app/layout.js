@@ -9,7 +9,9 @@ export const metadata = {
 async function getCategories() {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`, {
-      cache: 'no-store',
+      next: {
+        revalidate: 60,
+      },
     });
 
     if (!res.ok) return [];
