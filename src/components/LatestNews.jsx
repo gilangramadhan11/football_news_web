@@ -35,6 +35,11 @@ export default function LatestNews({ latest }) {
         if (words.length <= limit) return cleanText;
         return words.slice(0, limit).join(' ') + '...';
     };
+
+    const backendUrl =
+    process.env.NODE_ENV === 'production'
+      ? 'https://footballnews-production.up.railway.app'
+      : 'http://127.0.0.1:8000';
     
     const mainArticle = latest[0];
     const sideArticles = latest.slice(1, 4);
@@ -62,7 +67,7 @@ export default function LatestNews({ latest }) {
                   className="block overflow-hidden rounded-2xl relative h-[420px]"
                 >
                   <img
-                    src={`http://127.0.0.1:8000/storage/${mainArticle.thumbnail}`}
+                    src={`${backendUrl}/storage/${mainArticle.thumbnail}`}
                     alt={mainArticle.title}
                     className="w-full h-[420px] object-cover group-hover:scale-105 transition duration-500"
                   />
