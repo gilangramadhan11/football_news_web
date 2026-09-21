@@ -46,7 +46,7 @@ export default function HeroSwiper({ featured }) {
                 <SwiperSlide key={featuredArticle.id}>
                     <div className="relative h-[500px] md:h-[650px] lg:h-[900px]">
                         <img
-                            src={`${backendUrl}/storage/${article.thumbnail}`}
+                            src={`${backendUrl}/storage/${featuredArticle.thumbnail}`}
                             alt={featuredArticle.title}
                             className="w-full h-full object-cover"
                         />
