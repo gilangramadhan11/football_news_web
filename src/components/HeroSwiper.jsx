@@ -9,6 +9,11 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
+const backendUrl =
+  process.env.NODE_ENV === 'production'
+    ? 'https://footballnews-production.up.railway.app'
+    : 'http://127.0.0.1:8000';
+
 export default function HeroSwiper({ featured }) {
     if (!featured || featured.length === 0) return null;
 
@@ -41,7 +46,7 @@ export default function HeroSwiper({ featured }) {
                 <SwiperSlide key={featuredArticle.id}>
                     <div className="relative h-[500px] md:h-[650px] lg:h-[900px]">
                         <img
-                            src={`http://127.0.0.1:8000/storage/${featuredArticle.thumbnail}`}
+                            src={`${backendUrl}/storage/${article.thumbnail}`}
                             alt={featuredArticle.title}
                             className="w-full h-full object-cover"
                         />
